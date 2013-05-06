@@ -1,4 +1,3 @@
-
   # puts `cal #{month} #{year}`
 
 class Calendar
@@ -10,6 +9,7 @@ class Calendar
   attr_reader :remonth
   attr_reader :space
 
+ # attr_accessor & reader can be consolidated into one line each
 
   MONTHS = %w(January February March April May June July August September October November December)
 
@@ -29,9 +29,14 @@ class Calendar
       raise ArgumentError, "This Calendar only works with months between 1 and 12"
     end
   end
+  
+  # this can be one if statement using 'or' 
 
   def convert_from_s
     # check out .include? (month.upcase[0,3]) on the MONTHS Constant
+    
+    # could month abbreviations be set as hashes? {JAN => 1, FEB => 2, etc}
+    
     if month.is_a? (String)
       case month.upcase[0,3]
       when "JAN"
@@ -61,6 +66,9 @@ class Calendar
       end
       remonth.to_i
     else
+    
+      # could possibly convert to_i, then if failure, run the above conversion?
+    
       case month.to_s
       when "1"
         month = 1
@@ -102,8 +110,11 @@ class Calendar
       raise ArgumentError, "This Calendar only works between 1800 and 3000"
     end
   end
+  # can be consolidated into one if statement using 'or'
 
   def year_to_s
+  
+    # this could be implmented in the ARGV statement?
     @year = year.to_s
   end
 
