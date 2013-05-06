@@ -1,4 +1,3 @@
-
   # puts `cal #{month} #{year}`
 
 class Calendar
@@ -9,6 +8,8 @@ class Calendar
   attr_reader :month_abbre
   attr_reader :remonth
   attr_reader :space
+  
+  # attr_reader & writer could be combined into one line each
 
 
   MONTHS = %w(January February March April May June July August September October November December)
@@ -23,6 +24,9 @@ class Calendar
   end
 
   def bogus_month
+  
+    # could be consolidated into one statement
+  
     if month >12
       raise ArgumentError, "This Calendar only works with months between 1 and 12"
     elsif month <1
@@ -32,6 +36,8 @@ class Calendar
 
   def convert_from_s
     # check out .include? (month.upcase[0,3]) on the MONTHS Constant
+    
+    # could be set up as hash {Jan => 1, Feb => 2, etc}
     if month.is_a? (String)
       case month.upcase[0,3]
       when "JAN"
@@ -62,6 +68,9 @@ class Calendar
       remonth.to_i
     else
       case month.to_s
+      
+        # could be reconfigured to directly take input.to_i 
+        
       when "1"
         month = 1
       when "2"
@@ -96,6 +105,8 @@ class Calendar
   end
 
   def bogus_year
+  
+    # could be consolidated into one statement & grouped with the bogus_month method
     if year <1800
       raise ArgumentError, "This Calendar only works between 1800 and 3000"
     elsif year >3000
@@ -104,6 +115,9 @@ class Calendar
   end
 
   def year_to_s
+  
+    # to_s could be added to the ARGV statement
+  
     @year = year.to_s
   end
 
@@ -153,6 +167,9 @@ class Calendar
   end
 
   def zeller
+  
+  # could be merged into zellers_congruence method
+  
     if zellers_congruence == 0
       6
     else
